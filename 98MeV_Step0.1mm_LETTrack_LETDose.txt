@@ -1,0 +1,199 @@
+# Define "World" Volume:
+s:Ge/World/Material   =  "Vacuum"
+s:Ge/World/Type       =  "TsBox"
+d:Ge/World/HLX        =  10.0 m
+d:Ge/World/HLY        =  10.0 m
+d:Ge/World/HLZ        =  10.0 m
+b:Ge/World/Invisible  = "True"
+
+# Define "Experimental Room" environment Volume:
+s:Ge/Room/Material        =  "G4_AIR"
+s:Ge/Room/Parent          =  "World"
+s:Ge/Room/Type            =  "TsBox"
+d:Ge/Room/HLX             =  5.0 m
+d:Ge/Room/HLY             =  5.0 m
+d:Ge/Room/HLZ             =  5.0 m
+s:Ge/Room/Color           = "green"
+b:Ge/Room/Invisible    = "True"
+
+# Water phantom inserted into the Air
+s:Ge/Phantom/Material     =  "G4_WATER"
+s:Ge/Phantom/Parent       =  "Room"
+s:Ge/Phantom/Type         =  "TsBox"
+d:Ge/Phantom/HLX          =  75.0 cm
+d:Ge/Phantom/HLY          =  75.0 cm
+d:Ge/Phantom/HLZ          =  80.0 cm
+d:Ge/Phantom/TransX       =  0.0  cm
+d:Ge/Phantom/TransY       =  0.0  cm
+d:Ge/Phantom/TransZ       =  80.0 cm
+d:Ge/Phantom/RotX         =  0. deg
+d:Ge/Phantom/RotY         =  0. deg
+d:Ge/Phantom/RotZ         =  0. deg
+i:Ge/Phantom/XBins        =  1
+i:Ge/Phantom/YBins        =  1
+i:Ge/Phantom/ZBins        =  1000
+s:Ge/Phantom/Color        = "blue"
+s:Ge/Phantom/DrawingStyle = "FullWireFrame"
+
+d:Ge/Phantom/MaxStepSize  = 0.1 mm
+
+
+# Define Tungsten Target
+sv:Ma/Tungsten/Components  =  3 "Tungsten" "Nickel" "Copper"
+uv:Ma/Tungsten/Fractions   =  3 0.95 0.035 0.015
+d:Ma/Tungsten/Density      =  18.0 g/cm3
+s:Ge/Tungsten/Type         =  "TsBox"
+s:Ge/Tungsten/Parent       =  "Room"
+s:Ge/Tungsten/Material     =  "Tungsten"
+d:Ge/Tungsten/HLX          =  250 mm
+d:Ge/Tungsten/HLY          =  30  mm
+d:Ge/Tungsten/HLZ          =  300 mm
+d:Ge/Tungsten/TransX       =  0. m
+d:Ge/Tungsten/TransY       =  -320 mm
+d:Ge/Tungsten/TransZ       = -300 mm
+d:Ge/Tungsten/RotX         =  0. deg
+d:Ge/Tungsten/RotY         =  0. deg
+d:Ge/Tungsten/RotZ         =  0. deg
+s:Ge/Tungsten/Color        = "red"
+s:Ge/Tungsten/DrawingStyle = "Solid"
+
+#d:Ge/Tungsten/MaxStepSize  = 0.001 mm
+
+
+#Define Scoring Geometry
+s:Ge/ScoringEntranceXY/Parent       = "Room"
+s:Ge/ScoringEntranceXY/Type         = "TsBox"
+b:Ge/ScoringEntranceXY/IsParallel   = "TRUE"
+d:Ge/ScoringEntranceXY/HLX          =  75.0  cm
+d:Ge/ScoringEntranceXY/HLY          =  75.0  cm
+d:Ge/ScoringEntranceXY/HLZ          =  1.0  cm
+i:Ge/ScoringEntranceXY/XBins        = 400
+i:Ge/ScoringEntranceXY/YBins        = 400
+i:Ge/ScoringEntranceXY/ZBins        = 1
+d:Ge/ScoringEntranceXY/TransX       = 0. m
+d:Ge/ScoringEntranceXY/TransY       = 0. m
+d:Ge/ScoringEntranceXY/TransZ       = 0.5 cm
+d:Ge/ScoringEntranceXY/RotX         = 0. deg
+d:Ge/ScoringEntranceXY/RotY         = 0. deg
+d:Ge/ScoringEntranceXY/RotZ         = 0. deg
+s:Ge/ScoringEntranceXY/Color        = "White"
+s:Ge/ScoringEntranceXY/DrawingStyle = "WireFrame"
+
+#s:Sc/ScoringEntranceXY/WeightBy = "Track"
+
+
+#Define Z_1
+s:Ge/ScoringEntranceXY1/Parent       = "Tungsten"
+s:Ge/ScoringEntranceXY1/Type         = "TsBox"
+b:Ge/ScoringEntranceXY1/IsParallel   = "TRUE"
+d:Ge/ScoringEntranceXY1/HLX          =  1.0  cm
+d:Ge/ScoringEntranceXY1/HLY          =  5.0  cm
+d:Ge/ScoringEntranceXY1/HLZ          =  0.4  cm
+i:Ge/ScoringEntranceXY1/XBins        = 1
+i:Ge/ScoringEntranceXY1/YBins        = 1
+i:Ge/ScoringEntranceXY1/ZBins        = 1
+d:Ge/ScoringEntranceXY1/TransX       = 256. mm
+d:Ge/ScoringEntranceXY1/TransY       = -2.2 cm
+d:Ge/ScoringEntranceXY1/TransZ       = -125 mm
+d:Ge/ScoringEntranceXY1/RotX         = 0. deg
+d:Ge/ScoringEntranceXY1/RotY         = 0. deg
+d:Ge/ScoringEntranceXY1/RotZ         = 0. deg
+s:Ge/ScoringEntranceXY1/Color        = "White"
+s:Ge/ScoringEntranceXY1/DrawingStyle = "WireFrame"
+
+
+
+#Define Physics List:
+sv:Ph/Default/Modules = 2 "g4em-standard_opt4", "g4h-phy_QGSP_BIC_AllHP"
+
+#Define Beam Parameters:
+s:So/Beam/Type                             = "Beam"
+s:So/Beam/Component                        = "Source"
+s:So/Beam/BeamParticle                     = "proton"
+
+d:So/Beam/BeamEnergy                       = 98.0 MeV
+#d:So/Beam/BeamEnergy                       = 98.0 MeV
+
+u:So/Beam/BeamEnergySpread                 = 1.0
+s:So/Beam/BeamPositionDistribution         = "Gaussian"
+s:So/Beam/BeamPositionCutoffShape          = "Ellipse"
+d:So/Beam/BeamPositionCutoffX              = 10. cm
+d:So/Beam/BeamPositionCutoffY              = 10. cm
+d:So/Beam/BeamPositionSpreadX              = 0.00001 cm
+d:So/Beam/BeamPositionSpreadY              = 0.00001 cm
+s:So/Beam/BeamAngularDistribution          = "Gaussian"
+d:So/Beam/BeamAngularCutoffX               = 90. deg
+d:So/Beam/BeamAngularCutoffY               = 90. deg
+d:So/Beam/BeamAngularSpreadX               = 0.000032 rad
+d:So/Beam/BeamAngularSpreadY               = 0.000032 rad
+
+#Source Placement
+s:Ge/Source/Parent    =  "Room"
+s:Ge/Source/Type      =  "Group"
+d:Ge/Source/TransX    =  0.0 m
+
+# 0 degrees
+d:Ge/Source/TransY    =  0.0 m
+# 3.5 degrees
+#d:Ge/Source/TransY    =  9.17439 mm
+# 5 degrees
+#d:Ge/Source/TransY    =  13.12329 mm
+# 7.5 degrees
+#d:Ge/Source/TransY    =  19.7479 mm
+# 10 degrees
+#d:Ge/Source/TransY    =  26.4490 mm
+d:Ge/Source/TransZ    = -600 mm
+# 0 degrees
+d:Ge/Source/RotX      =  -0.0 deg
+# 3.5 degrees
+#d:Ge/Source/RotX      =  -3.5 deg
+# 5 degrees
+#d:Ge/Source/RotX      =  -5 deg
+# 7.5 degrees
+#d:Ge/Source/RotX      =  -7.5 deg
+# 10 degrees
+#d:Ge/Source/RotX      =  -10 deg
+d:Ge/Source/RotY      =  0.0 deg
+d:Ge/Source/RotZ      =  0.0 deg
+
+#Scoring
+
+s:Sc/Dose2D_98MeV_LET_Dose_0Deg_0.1mm/Quantity                     = "ProtonLET"
+s:Sc/Dose2D_98MeV_LET_Dose_0Deg_0.1mm/Component                    = "Phantom"
+b:Sc/Dose2D_98MeV_LET_Dose_0Deg_0.1mm/OutputToConsole              = "TRUE"
+s:Sc/Dose2D_98MeV_LET_Dose_0Deg_0.1mm/WeightBy                     = "Dose"
+s:Sc/Dose2D_98MeV_LET_Dose_0Deg_0.1mm/IfOutputFileAlreadyExists    = "Overwrite"
+s:Sc/Dose2D_98MeV_LET_Dose_0Deg_0.1mm/OutputType                   = "csv"
+
+
+s:Sc/Dose2D_98MeV_LET_Track_0Deg_0.1mm/Quantity                     = "ProtonLET"
+s:Sc/Dose2D_98MeV_LET_Track_0Deg_0.1mm/Component                    = "Phantom"
+b:Sc/Dose2D_98MeV_LET_Track_0Deg_0.1mm/OutputToConsole              = "TRUE"
+s:Sc/Dose2D_98MeV_LET_Track_0Deg_0.1mm/WeightBy                     = "Track"
+s:Sc/Dose2D_98MeV_LET_Track_0Deg_0.1mm/IfOutputFileAlreadyExists    = "Overwrite"
+s:Sc/Dose2D_98MeV_LET_Track_0Deg_0.1mm/OutputType                   = "csv"
+
+s:Sc/DepthDose_98MeV_0.1mm/Quantity                     = "DoseToMedium"
+s:Sc/DepthDose_98MeV_0.1mm/Component                    = "Phantom"
+b:Sc/DepthDose_98MeV_0.1mm/OutputToConsole              = "TRUE"
+s:Sc/DepthDose_98MeV_0.1mm/IfOutputFileAlreadyExists    = "Overwrite"
+s:Sc/DepthDose_98MeV_0.1mm/OutputType                   = "csv"
+
+
+#Simulation Number of History
+i:So/Beam/NumberOfHistoriesInRun            = 10000000
+i:Ts/ShowHistoryCountAtInterval             = 500000
+i:Ts/NumberOfThreads                        = 35
+
+#GUI
+#i:Gr/ViewA/WindowSizeX                      = 900
+#i:Gr/ViewA/WindowSizeY                      = 900
+#d:Gr/ViewA/Theta                            = 55 deg
+#d:Gr/ViewA/Phi                              = 20 deg
+#s:Gr/ViewA/Projection                       = "Perspective"
+#d:Gr/ViewA/PerspectiveAngle                 = 30 deg
+#u:Gr/ViewA/Zoom                             = 1.0
+#sv:Gr/OnlyIncludeParticlesCharged = 1 "Positive"
+#b:Gr/ViewA/HiddenLineRemovalForTrajectories = "True"
+#s:Gr/ViewA/Type                             = "OpenGL"
+#Ts/UseQt                                    = "True"
